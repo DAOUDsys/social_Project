@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {Navigate, Routes, Route, BrowserRouter} from "react-router-dom";
+import Home from "./views/home/home.jsx";
+import Login from "./views/login/login.jsx";
+import Profile from "./views/profile/profile.jsx";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import {CssBaseLine, ThemeProvider} from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import {themeSittings} from "./theme.js"
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const mode = useSelector((state) => state.mode);
+  const theme = useMemo(() => createTheme(themeSittings(mode)), [mode])
+  return <div className="App">
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseLine />
+    <Routes>
+      <Route path="/" element={Login} />
+      <Route path="/home" element={Home} />
+      <Route path="/profile/:id" element={Profile} />
+    </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
+  </div>;
 }
 
 export default App;

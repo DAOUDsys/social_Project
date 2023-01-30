@@ -1,7 +1,10 @@
-import React from "react";
+import { Box } from "@mui/material";
+import Navbar from "../navbar/navbar.jsx";
 
 function Home() {
-  return <div>Home</div>;
+  return <Box>
+    <Navbar />
+  </Box>;
 }
 
 export default Home;

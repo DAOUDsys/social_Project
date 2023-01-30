@@ -30,8 +30,8 @@ export const colorTokens = {
   };
   
   // mui theme settings
-  export const themeSettings = (mode) => {
-    return {
+  export const themeSettings = (mode) => ({
+    
       palette: {
         mode: mode,
         ...(mode === "dark"
@@ -100,7 +100,12 @@ export const colorTokens = {
         h6: {
           fontFamily: ["Rubik", "sans-serif"].join(","),
           fontSize: 14,
-        },
-      },
-    };
-  };
+        },      
+    }
+  });
+
+
+
+
+
+
